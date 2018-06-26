@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GISTelerikModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MK_PROTECTEDAREAS_EEACDDAV15">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="int" Nullable="false" />
+          <Property Name="SITE_CODE" Type="int" />
+          <Property Name="PARENT_ISO" Type="nvarchar" MaxLength="80" />
+          <Property Name="ISO3" Type="nvarchar" MaxLength="80" />
+          <Property Name="SITE_NAME" Type="nvarchar" MaxLength="127" />
+          <Property Name="SITE_AREA" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="YEAR" Type="int" />
+          <Property Name="DESIG_ABBR" Type="nvarchar" MaxLength="80" />
+          <Property Name="DESIGNATE" Type="nvarchar" MaxLength="100" />
+          <Property Name="ODESIGNATE" Type="nvarchar" MaxLength="93" />
+          <Property Name="IUCNCAT" Type="nvarchar" MaxLength="80" />
+          <Property Name="CDDA_disse" Type="nvarchar" MaxLength="80" />
+          <Property Name="Shape" Type="geometry" />
+          <Property Name="MUNICIPALITY" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GISTelerik.dbo.MK_PROTECTEDAREAS_EEACDDAV15__ATTACH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MK_PROTECTEDAREAS_EEACDDAV15__ATTACH">
+          <Key>
+            <PropertyRef Name="ATTACHMENTID" />
+            <PropertyRef Name="REL_OBJECTID" />
+            <PropertyRef Name="CONTENT_TYPE" />
+            <PropertyRef Name="ATT_NAME" />
+            <PropertyRef Name="DATA_SIZE" />
+          </Key>
+          <Property Name="ATTACHMENTID" Type="int" Nullable="false" />
+          <Property Name="REL_OBJECTID" Type="int" Nullable="false" />
+          <Property Name="CONTENT_TYPE" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ATT_NAME" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DATA_SIZE" Type="int" Nullable="false" />
+          <Property Name="DATA" Type="varbinary(max)" />
+        </EntityType>
+        <EntityContainer Name="GISTelerikModelStoreContainer">
+          <EntitySet Name="MK_PROTECTEDAREAS_EEACDDAV15" EntityType="Self.MK_PROTECTEDAREAS_EEACDDAV15" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MK_PROTECTEDAREAS_EEACDDAV15__ATTACH" EntityType="Self.MK_PROTECTEDAREAS_EEACDDAV15__ATTACH" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[ATTACHMENTID] AS [ATTACHMENTID], 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[REL_OBJECTID] AS [REL_OBJECTID], 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[CONTENT_TYPE] AS [CONTENT_TYPE], 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[ATT_NAME] AS [ATT_NAME], 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[DATA_SIZE] AS [DATA_SIZE], 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[DATA] AS [DATA]
+    FROM [dbo].[MK_PROTECTEDAREAS_EEACDDAV15__ATTACH] AS [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GISTelerikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MK_PROTECTEDAREAS_EEACDDAV15">
+          <Key>
+            <PropertyRef Name="OBJECTID" />
+          </Key>
+          <Property Name="OBJECTID" Type="Int32" Nullable="false" />
+          <Property Name="SITE_CODE" Type="Int32" />
+          <Property Name="PARENT_ISO" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="ISO3" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="SITE_NAME" Type="String" MaxLength="127" FixedLength="false" Unicode="true" />
+          <Property Name="SITE_AREA" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="YEAR" Type="Int32" />
+          <Property Name="DESIG_ABBR" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="DESIGNATE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ODESIGNATE" Type="String" MaxLength="93" FixedLength="false" Unicode="true" />
+          <Property Name="IUCNCAT" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="CDDA_disse" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Shape" Type="Geometry" />
+          <Property Name="MUNICIPALITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MK_PROTECTEDAREAS_EEACDDAV15__ATTACH">
+          <Key>
+            <PropertyRef Name="ATTACHMENTID" />
+            <PropertyRef Name="REL_OBJECTID" />
+            <PropertyRef Name="CONTENT_TYPE" />
+            <PropertyRef Name="ATT_NAME" />
+            <PropertyRef Name="DATA_SIZE" />
+          </Key>
+          <Property Name="ATTACHMENTID" Type="Int32" Nullable="false" />
+          <Property Name="REL_OBJECTID" Type="Int32" Nullable="false" />
+          <Property Name="CONTENT_TYPE" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ATT_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DATA_SIZE" Type="Int32" Nullable="false" />
+          <Property Name="DATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="GISTelerikEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MK_PROTECTEDAREAS_EEACDDAV15" EntityType="Self.MK_PROTECTEDAREAS_EEACDDAV15" />
+          <EntitySet Name="MK_PROTECTEDAREAS_EEACDDAV15__ATTACH" EntityType="Self.MK_PROTECTEDAREAS_EEACDDAV15__ATTACH" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GISTelerikModelStoreContainer" CdmEntityContainer="GISTelerikEntities">
+          <EntitySetMapping Name="MK_PROTECTEDAREAS_EEACDDAV15">
+            <EntityTypeMapping TypeName="GISTelerikModel.MK_PROTECTEDAREAS_EEACDDAV15">
+              <MappingFragment StoreEntitySet="MK_PROTECTEDAREAS_EEACDDAV15">
+                <ScalarProperty Name="OBJECTID" ColumnName="OBJECTID" />
+                <ScalarProperty Name="SITE_CODE" ColumnName="SITE_CODE" />
+                <ScalarProperty Name="PARENT_ISO" ColumnName="PARENT_ISO" />
+                <ScalarProperty Name="ISO3" ColumnName="ISO3" />
+                <ScalarProperty Name="SITE_NAME" ColumnName="SITE_NAME" />
+                <ScalarProperty Name="SITE_AREA" ColumnName="SITE_AREA" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+                <ScalarProperty Name="DESIG_ABBR" ColumnName="DESIG_ABBR" />
+                <ScalarProperty Name="DESIGNATE" ColumnName="DESIGNATE" />
+                <ScalarProperty Name="ODESIGNATE" ColumnName="ODESIGNATE" />
+                <ScalarProperty Name="IUCNCAT" ColumnName="IUCNCAT" />
+                <ScalarProperty Name="CDDA_disse" ColumnName="CDDA_disse" />
+                <ScalarProperty Name="Shape" ColumnName="Shape" />
+                <ScalarProperty Name="MUNICIPALITY" ColumnName="MUNICIPALITY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MK_PROTECTEDAREAS_EEACDDAV15__ATTACH">
+            <EntityTypeMapping TypeName="GISTelerikModel.MK_PROTECTEDAREAS_EEACDDAV15__ATTACH">
+              <MappingFragment StoreEntitySet="MK_PROTECTEDAREAS_EEACDDAV15__ATTACH">
+                <ScalarProperty Name="ATTACHMENTID" ColumnName="ATTACHMENTID" />
+                <ScalarProperty Name="REL_OBJECTID" ColumnName="REL_OBJECTID" />
+                <ScalarProperty Name="CONTENT_TYPE" ColumnName="CONTENT_TYPE" />
+                <ScalarProperty Name="ATT_NAME" ColumnName="ATT_NAME" />
+                <ScalarProperty Name="DATA_SIZE" ColumnName="DATA_SIZE" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

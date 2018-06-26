@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Praksa.MK_PROTECTEDAREAS_EEACDDAV15>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+@using (Html.BeginForm())
+{
+
+    var list = new SelectList(new[]
+           {
+new { Name="Name"},
+new { Name="Code"},
+new { Name="ISO3"},
+new { Name="Year"},
+new { Name="Municipality"},
+},
+           "Name", "Name");
+
+    <b>Search By:</b>
+
+    @Html.DropDownList("searchBy", list, new { @class = "form-control" })
+
+
+    <b>Search Parameter:</b>
+    @Html.TextBox("request", null, new { @class = "form-control" })
+
+    <button type="submit" class="btn">Search</button>
+    <br />
+
+
+
+
+
+
+
+
+}
+<br />
+<table class="table" id="ta" class="display" style="width:100%">
+    <thread>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SITE_CODE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PARENT_ISO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ISO3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SITE_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SITE_AREA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YEAR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DESIG_ABBR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DESIGNATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ODESIGNATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IUCNCAT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CDDA_disse)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.MUNICIPALITY)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thread>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SITE_CODE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PARENT_ISO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISO3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SITE_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SITE_AREA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YEAR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESIG_ABBR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESIGNATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ODESIGNATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IUCNCAT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CDDA_disse)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.MUNICIPALITY)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OBJECTID })
+                    @Html.ActionLink("Details", "Details", new { id = item.OBJECTID })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OBJECTID })
+                    @Html.ActionLink("Shape", "Shape", new { id = item.OBJECTID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@*<script src="~/scripts/jquery-1.10.2.js"></script>*@
+
+
+
+@section scripts{
+
+    <script>
+        $(document).on("ready", function () {
+
+            $("#ta").DataTable();
+        });
+    </script>
+
+
+}

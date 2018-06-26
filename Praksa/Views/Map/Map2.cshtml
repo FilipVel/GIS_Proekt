@@ -1,0 +1,189 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Intro to MapView - Create a 2D map</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        html, body {
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        #viewDiv {
+            margin: 0px 0px 0px 0px;
+        }
+
+        #button {
+            margin: 50px 0px 0px 0px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://jsdev.arcgis.com/4.1/esri/css/main.css">
+    <link rel="stylesheet" href="https://jsdev.arcgis.com/4.1/dijit/themes/soria/soria.css">
+    <script src="https://jsdev.arcgis.com/4.1/"></script>
+
+    <script>
+
+        var map;
+        var view;
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/layers/FeatureLayer",
+            "esri/layers/MapImageLayer",
+            "esri/renderers/UniqueValueRenderer",
+            "esri/renderers/ClassBreaksRenderer",
+            "esri/symbols/SimpleMarkerSymbol",
+            "esri/symbols/SimpleFillSymbol",
+            "esri/widgets/Legend",
+            "esri/PopupTemplate",
+            "esri/symbols/TextSymbol",
+            "esri/request",
+            "dojo/domReady!"
+        ], function (Map, MapView, FeatureLayer, MapImageLayer,
+            UniqueValueRenderer, ClassBreaksRenderer,
+            SimpleMarkerSymbol, SimpleFillSymbol,
+            Legend, PopupTemplate, TextSymbol, Request) {
+                 map = new Map({
+                    basemap: "gray"
+                });
+
+                 view = new MapView({
+                    container: "viewDiv",
+                    map: map,
+                    //center: [-104.928591, 39.732578],
+                     center: [21.769091, 41.659636],
+                    zoom:9
+                });
+            
+
+
+            $("#satelite").on("click", function () {
+                map.basemap = "satellite";
+            });
+
+            $("#topo").on("click", function () {
+                map.basemap = "topo";
+            });
+
+            $("#gray").on("click", function () {
+                map.basemap = "gray";
+            });
+            $("#street").on("click", function () {
+                map.basemap = "streets";
+            });
+
+
+            var url = "http://server.arcgisonline.com/arcgis/rest/services/Demographics?f=pjson";
+
+            var object = { responseType: "json" };
+            Request(url, object)
+                .then(function (response) {
+                    var results = response.data;
+                    
+                    let lista = document.getElementById("list");
+                    lista.addEventListener("change", function () {
+                        var textName = lista.options[lista.selectedIndex].textContent;
+                        var layer;
+                        if (textName !== "Protected Areas Macedonia") {
+                            let linkot = "http://server.arcgisonline.com/arcgis/rest/services/" + textName + "/MapServer";
+                            layer = new MapImageLayer({
+                                url: linkot
+                            })
+
+                             layer.then(function () {
+                            view.extent = layer.fullExtent;
+                        })
+                        }
+                        else {
+                            // alert("Tuka sum");
+                           
+                            layer = new FeatureLayer({
+                                url: "http://app.gdi.mk/arcgis/rest/services/ProtectedAreas_GISTelerik/FeatureServer"
+                            })
+                            map.center = [21.769091, 41.659636];
+                            view.extent = null;
+                        }
+
+                        map.removeAll();
+                        map.add(layer);
+
+
+                      
+                    })
+                    for (var i = 0; i < results.services.length; i++) {
+                        let option = document.createElement("option");
+                        option.textContent = results.services[i].name;
+                        lista.appendChild(option);
+
+
+                    }   
+
+                    let option2 = document.createElement("option");
+                    option2.textContent = "Protected Areas Macedonia";
+                    lista.appendChild(option2);
+                })
+
+            var legenda = new Legend({
+                view: view
+            })
+
+            view.ui.add(legenda, "bottom-right");
+            });
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Areas", "Index", "MK_PROTECTEDAREAS_EEACDDAV15")</li>
+                    <li>@Html.ActionLink("Galery", "Index", "MK_PROTECTEDAREAS_EEACDDAV15__ATTACH")</li>
+                    <li>@Html.ActionLink("Map", "Map2", "Map")</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="button" style="height:3%">
+        <button id="satelite" style="height:100%" class="btn-primary">Satelite</button>
+        <button id="topo" style="height:100%" class="btn-primary">Topo</button>
+        <button id="gray" style="height:100%" class="btn-primary">Gray</button>
+        <button id="street" style="height:100%" class="btn-primary">Streets</button>
+        <select id="list"></select>
+    </div>
+    <div id="viewDiv" style="height:90%">
+
+    </div>
+    <div class="container body-content">
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/css")
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+</body>
+</html>

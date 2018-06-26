@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GISTelerikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MK_PROTECTEDAREAS_EEACDDAV15">
+    <Key>
+      <PropertyRef Name="OBJECTID" />
+    </Key>
+    <Property Name="OBJECTID" Type="Int32" Nullable="false" />
+    <Property Name="SITE_CODE" Type="Int32" />
+    <Property Name="PARENT_ISO" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="ISO3" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="SITE_NAME" Type="String" MaxLength="127" FixedLength="false" Unicode="true" />
+    <Property Name="SITE_AREA" Type="Decimal" Precision="38" Scale="8" />
+    <Property Name="YEAR" Type="Int32" />
+    <Property Name="DESIG_ABBR" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="DESIGNATE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ODESIGNATE" Type="String" MaxLength="93" FixedLength="false" Unicode="true" />
+    <Property Name="IUCNCAT" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="CDDA_disse" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Shape" Type="Geometry" />
+    <Property Name="MUNICIPALITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MK_PROTECTEDAREAS_EEACDDAV15__ATTACH">
+    <Key>
+      <PropertyRef Name="ATTACHMENTID" />
+      <PropertyRef Name="REL_OBJECTID" />
+      <PropertyRef Name="CONTENT_TYPE" />
+      <PropertyRef Name="ATT_NAME" />
+      <PropertyRef Name="DATA_SIZE" />
+    </Key>
+    <Property Name="ATTACHMENTID" Type="Int32" Nullable="false" />
+    <Property Name="REL_OBJECTID" Type="Int32" Nullable="false" />
+    <Property Name="CONTENT_TYPE" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ATT_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DATA_SIZE" Type="Int32" Nullable="false" />
+    <Property Name="DATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityContainer Name="GISTelerikEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MK_PROTECTEDAREAS_EEACDDAV15" EntityType="Self.MK_PROTECTEDAREAS_EEACDDAV15" />
+    <EntitySet Name="MK_PROTECTEDAREAS_EEACDDAV15__ATTACH" EntityType="Self.MK_PROTECTEDAREAS_EEACDDAV15__ATTACH" />
+  </EntityContainer>
+</Schema>

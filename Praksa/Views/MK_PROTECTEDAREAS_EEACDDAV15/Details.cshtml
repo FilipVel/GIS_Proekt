@@ -1,0 +1,116 @@
+﻿@model Praksa.MK_PROTECTEDAREAS_EEACDDAV15
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Details for @Model.SITE_NAME</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SITE_CODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SITE_CODE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PARENT_ISO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PARENT_ISO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISO3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISO3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SITE_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SITE_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SITE_AREA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SITE_AREA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YEAR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YEAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESIG_ABBR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESIG_ABBR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESIGNATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESIGNATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ODESIGNATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ODESIGNATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IUCNCAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IUCNCAT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CDDA_disse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CDDA_disse)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MUNICIPALITY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MUNICIPALITY)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OBJECTID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

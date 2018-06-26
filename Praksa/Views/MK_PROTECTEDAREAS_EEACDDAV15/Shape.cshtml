@@ -1,0 +1,30 @@
+﻿@model Praksa.MK_PROTECTEDAREAS_EEACDDAV15
+
+@{
+    ViewBag.Title = "Shape";
+}
+
+<h2>Shape</h2>
+
+<div>
+    <h4>Area @Model.SITE_NAME Shape</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shape)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shape)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+   
+    @Html.ActionLink("Back to List", "Index")
+</p>

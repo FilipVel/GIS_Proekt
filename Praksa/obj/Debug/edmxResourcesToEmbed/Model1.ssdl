@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GISTelerikModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="MK_PROTECTEDAREAS_EEACDDAV15">
+    <Key>
+      <PropertyRef Name="OBJECTID" />
+    </Key>
+    <Property Name="OBJECTID" Type="int" Nullable="false" />
+    <Property Name="SITE_CODE" Type="int" />
+    <Property Name="PARENT_ISO" Type="nvarchar" MaxLength="80" />
+    <Property Name="ISO3" Type="nvarchar" MaxLength="80" />
+    <Property Name="SITE_NAME" Type="nvarchar" MaxLength="127" />
+    <Property Name="SITE_AREA" Type="numeric" Precision="38" Scale="8" />
+    <Property Name="YEAR" Type="int" />
+    <Property Name="DESIG_ABBR" Type="nvarchar" MaxLength="80" />
+    <Property Name="DESIGNATE" Type="nvarchar" MaxLength="100" />
+    <Property Name="ODESIGNATE" Type="nvarchar" MaxLength="93" />
+    <Property Name="IUCNCAT" Type="nvarchar" MaxLength="80" />
+    <Property Name="CDDA_disse" Type="nvarchar" MaxLength="80" />
+    <Property Name="Shape" Type="geometry" />
+    <Property Name="MUNICIPALITY" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GISTelerik.dbo.MK_PROTECTEDAREAS_EEACDDAV15__ATTACH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MK_PROTECTEDAREAS_EEACDDAV15__ATTACH">
+    <Key>
+      <PropertyRef Name="ATTACHMENTID" />
+      <PropertyRef Name="REL_OBJECTID" />
+      <PropertyRef Name="CONTENT_TYPE" />
+      <PropertyRef Name="ATT_NAME" />
+      <PropertyRef Name="DATA_SIZE" />
+    </Key>
+    <Property Name="ATTACHMENTID" Type="int" Nullable="false" />
+    <Property Name="REL_OBJECTID" Type="int" Nullable="false" />
+    <Property Name="CONTENT_TYPE" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ATT_NAME" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="DATA_SIZE" Type="int" Nullable="false" />
+    <Property Name="DATA" Type="varbinary(max)" />
+  </EntityType>
+  <EntityContainer Name="GISTelerikModelStoreContainer">
+    <EntitySet Name="MK_PROTECTEDAREAS_EEACDDAV15" EntityType="Self.MK_PROTECTEDAREAS_EEACDDAV15" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MK_PROTECTEDAREAS_EEACDDAV15__ATTACH" EntityType="Self.MK_PROTECTEDAREAS_EEACDDAV15__ATTACH" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[ATTACHMENTID] AS [ATTACHMENTID], 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[REL_OBJECTID] AS [REL_OBJECTID], 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[CONTENT_TYPE] AS [CONTENT_TYPE], 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[ATT_NAME] AS [ATT_NAME], 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[DATA_SIZE] AS [DATA_SIZE], 
+    [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH].[DATA] AS [DATA]
+    FROM [dbo].[MK_PROTECTEDAREAS_EEACDDAV15__ATTACH] AS [MK_PROTECTEDAREAS_EEACDDAV15__ATTACH]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
